@@ -20,7 +20,7 @@ pipeline {
 
         stage('Cloning repo') {
             steps {
-                git url: 'https://github.com/adrienblind/saagie-cicd-jenkins-gradle.git'
+                git url: 'https://github.com/adrienblind/saagie-cicd.git'
             }
         }
     
