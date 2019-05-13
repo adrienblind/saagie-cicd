@@ -5,11 +5,6 @@ pipeline {
     tools {
         gradle "gradle54"
     }
-
-    triggers {
-        cron('H */8 * * *')
-        pollSCM('* * * * *')
-    }
     
     environment {
         SAAGIE_CREDS = credentials('SaagieCreds')
