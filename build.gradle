@@ -1,0 +1,30 @@
+plugins {
+  id 'io.saagie.gradle-saagie-plugin' version '2.0.1'
+}
+
+saagie {
+    server {
+        url = "${saagieurl}"
+        login = "${saagieusername}"
+        password = "${saagiepwd}"
+        platform = "${saagieplatform}"
+    }
+
+    jobs {[
+            {
+                id = 21389
+                name = '[CICD] My python processing job'
+                type = 'python'
+                category = 'processing'
+                languageVersion = '3.5.2'
+                cpu = 1
+                memory = 1024
+                disk = 2048
+                arguments = 'MyParam=3'
+                description = 'This is an example job delivered in a CI/CD way.'
+                releaseNote = 'This is a new release.'
+                email = 'adrien.blind@saagie.com'
+            }
+        ]}
+    fileName = './MyIngestionJob.py'
+}
