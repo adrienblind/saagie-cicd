@@ -1,5 +1,5 @@
 plugins {
-  id 'io.saagie.gradle-saagie-plugin' version '2.0.1'
+  id 'io.saagie.gradle-saagie-dataops-plugin' version '1.1.13'
 }
 
 saagie {
@@ -7,24 +7,27 @@ saagie {
         url = "${saagieurl}"
         login = "${saagieusername}"
         password = "${saagiepwd}"
-        platform = "${saagieplatform}"
+        environment = "${saagieplatform}"
     }
 
-    jobs {[
-            {
-                id = 21389
-                name = '[CICD] My python processing job'
-                type = 'python'
-                category = 'processing'
-                languageVersion = '3.5.2'
-                cpu = 1
-                memory = 1024
-                disk = 2048
-                arguments = 'MyParam=3'
-                description = 'This is an example job delivered in a CI/CD way.'
-                releaseNote = 'This is a new release.'
-                email = 'adrien.blind@saagie.com'
+    project {
+        id = '05836fe0-baf7-46d9-ad12-87e99cac8f80'
+    }
+
+    job {
+            name = 'MyIngestionJob V2'
+            description = 'This is an example job delivered in a CI/CD way'
+            category = 'Processing'
+            technology = '13522063-c18b-4ecd-b61f-3bae1e0ad93c'
+            isScheduled = false
+    }
+
+    jobVersion  {
+            commandLine='python {file} arg1 arg2'
+            releaseNote = 'This is a new release.'
+            runtimeVersion = '2.7'
+            packageInfo {
+              name='./MyIngestionJob.py'
             }
-        ]}
-    fileName = './MyIngestionJob.py'
+        }
 }
