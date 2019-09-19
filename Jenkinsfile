@@ -24,7 +24,7 @@ pipeline {
                 SAAGIE_PLATFORM = '4'
             }
             steps {
-                sh "gradle projectsCreateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
+                sh "gradle projectsCreateJob --stacktrace --debug -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
             }
         }
         
@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 input "Deploy to PREPROD ?"
-                sh "gradle updateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
+                sh "gradle projectsCreateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
             }
         }
             
@@ -44,7 +44,7 @@ pipeline {
             }
             steps {
                 input "Deploy to PROD ?"
-                sh "gradle updateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
+                sh "gradle projectsCreateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
             }
         }
     }
