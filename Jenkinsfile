@@ -8,7 +8,7 @@ pipeline {
     
     environment {
         SAAGIE_CREDS = credentials('SaagieCreds')
-        SAAGIE_URL = 'https://saagie-manager.prod.saagie.io/api/v1'
+        SAAGIE_URL = 'https://saagie-beta.prod.saagie.io'
     }
     
     stages {
