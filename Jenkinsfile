@@ -15,7 +15,7 @@ pipeline {
 
         stage('Cloning repo') {
             steps {
-                git url: 'https://github.com/adrienblind/saagie-cicd.git'
+                git branch: 'dataops-plugin', url: 'https://github.com/adrienblind/saagie-cicd.git'
             }
         }
     
@@ -24,7 +24,7 @@ pipeline {
                 SAAGIE_PLATFORM = '4'
             }
             steps {
-                sh "gradle updateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
+                sh "gradle projectsCreateJob -Psaagieusername=$SAAGIE_CREDS_USR -Psaagiepwd=$SAAGIE_CREDS_PSW -Psaagieplatform=$SAAGIE_PLATFORM -Psaagieurl=$SAAGIE_URL"
             }
         }
         
